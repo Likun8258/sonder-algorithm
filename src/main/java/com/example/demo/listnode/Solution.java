@@ -20,10 +20,14 @@ public class Solution {
         second.next = third;
         third.next = four;
 
-        System.out.println(printListFromTailToHead(reverseList(first)));
+        System.out.println(printListFromTailToHead(reverseListOne(first)));
+        System.out.println(printListFromTailToHead(reverseListTwo(first)));
     }
 
-    public static ListNode reverseList(ListNode head) {
+    /**
+     * 第一种思路
+     */
+    public static ListNode reverseListOne(ListNode head) {
 
         if (head == null) {
             return null;
@@ -44,6 +48,27 @@ public class Solution {
         }
 
         return reverseHead;
+    }
+
+    /**
+     * 第二种思路
+     */
+    public static ListNode reverseListTwo(ListNode head) {
+
+        if (head == null) {
+            return null;
+        }
+        ListNode pre = null;
+        ListNode next = null;
+
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+
+        return pre;
     }
 
     /**
